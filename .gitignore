@@ -1,5 +1,6 @@
 #confidential files
 *.ini
+*.properties
 
 #Java class files
 build/
