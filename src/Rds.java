@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Rds {
     final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    final String DB_URL = "jdbc:mysql://tweets.cssmopf7grit.us-east-1.rds.amazonaws.com:3306/tweets";
+    final String DB_URL = "jdbc:mysql://tweet.cssmopf7grit.us-east-1.rds.amazonaws.com/tweets";
     private String password = null;
     private static HashMap<String, String> map = new HashMap<String, String>();
     private static String[] table = {"food", "game", "music", "sport"};
