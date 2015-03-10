@@ -85,7 +85,7 @@ public class Rds {
         return list;
     }
     
-    public void insert(boolean[] mask, Tweet tweet) {
+    public void insert(boolean[] mask, Tweet tweet) throws InterruptedException {
         Statement stmt;
         while (true) {
         	try {
@@ -112,7 +112,8 @@ public class Rds {
         		stmt.close();
         		break;
 			} catch (Exception e) {
-				System.err.println("Reconnect to database.");
+				System.err.println("Reconnect to database in 3 seconds.");
+				Thread.currentThread().sleep(3000);
 				init();
 				e.printStackTrace();
         	}
