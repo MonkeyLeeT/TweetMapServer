@@ -62,7 +62,6 @@ public class Rds {
         while (true) {
             try {
                 stmt = conn.createStatement();
-                System.out.println(sql);
                 ResultSet rs = stmt.executeQuery(sql);
                 while(rs.next()){
                     SelectResult sr = new SelectResult(rs.getString("id_str"));
@@ -77,6 +76,7 @@ public class Rds {
                 stmt.close();
                 break;
             } catch (Exception e) {
+                System.out.println(sql);
             	System.out.println("Reconnect to database in 3 seconds.");
 				try {
 					Thread.currentThread().sleep(3000);
@@ -95,6 +95,7 @@ public class Rds {
     
     public void insert(boolean[] mask, Tweet tweet) throws InterruptedException {
         Statement stmt;
+        String sqlcpy = "";
         while (true) {
         	try {
         		stmt = conn.createStatement();
@@ -112,13 +113,14 @@ public class Rds {
         						+ text + "', '" 
         						+ longtitude + "', '"
         						+ latitude + "')";
-        				System.out.println(sql);
+        				sqlcpy = sql;
         				stmt.executeUpdate(sql);
         			}
         		}
         		stmt.close();
         		break;
 			} catch (Exception e) {
+				System.out.println(sqlcpy);
 				System.out.println("Reconnect to database in 3 seconds.");
 				try {
 					Thread.currentThread().sleep(3000);
