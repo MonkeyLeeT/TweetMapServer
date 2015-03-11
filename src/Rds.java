@@ -62,6 +62,7 @@ public class Rds {
         while (true) {
             try {
                 stmt = conn.createStatement();
+                System.out.println(sql);
                 ResultSet rs = stmt.executeQuery(sql);
                 while(rs.next()){
                     SelectResult sr = new SelectResult(rs.getString("id_str"));
@@ -85,6 +86,7 @@ public class Rds {
 				}
             	init();
                 e.printStackTrace(System.out);
+                break;
             }
         }
         System.out.println("Total count of tweets:" + count);
@@ -110,6 +112,7 @@ public class Rds {
         						+ text + "', '" 
         						+ longtitude + "', '"
         						+ latitude + "')";
+        				System.out.println(sql);
         				stmt.executeUpdate(sql);
         			}
         		}
@@ -125,6 +128,7 @@ public class Rds {
 				}
             	init();
                 e.printStackTrace(System.out);
+                break;
         	}
         }
 
