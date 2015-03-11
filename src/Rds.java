@@ -74,7 +74,6 @@ public class Rds {
                 }
                 rs.close();
                 stmt.close();
-                conn.close();
                 break;
             } catch (Exception e) {
             	System.out.println("Reconnect to database in 3 seconds.");
@@ -115,7 +114,6 @@ public class Rds {
         			}
         		}
         		stmt.close();
-                conn.close();
         		break;
 			} catch (Exception e) {
 				System.out.println("Reconnect to database in 3 seconds.");
