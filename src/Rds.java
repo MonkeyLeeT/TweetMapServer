@@ -55,7 +55,6 @@ public class Rds {
         		" WHERE created_at < '" + end + 
         		"' AND created_at > '" + start +
         		"'";
-        new StringBuilder();
         Statement stmt;
         int count = 0;
         List<SelectResult> list = new LinkedList<SelectResult>();
@@ -74,11 +73,18 @@ public class Rds {
                 }
                 rs.close();
                 stmt.close();
+                conn.close();
                 break;
             } catch (Exception e) {
-            	System.err.println("Reconnect to database.");
+            	System.out.println("Reconnect to database in 3 seconds.");
+				try {
+					Thread.currentThread().sleep(3000);
+					conn.close();
+				} catch (Exception e1) {
+					e1.printStackTrace(System.out);
+				}
             	init();
-                e.printStackTrace();
+                e.printStackTrace(System.out);
             }
         }
         System.out.println("Total count of tweets:" + count);
@@ -90,8 +96,6 @@ public class Rds {
         while (true) {
         	try {
         		stmt = conn.createStatement();
-
-
         		Tweet.Coordinate coor = tweet.coordinates;
         		String longtitude = coor.coordinates.get(0).toString();
         		String latitude = coor.coordinates.get(1).toString();
@@ -110,12 +114,18 @@ public class Rds {
         			}
         		}
         		stmt.close();
+                conn.close();
         		break;
 			} catch (Exception e) {
-				System.err.println("Reconnect to database in 3 seconds.");
-				Thread.currentThread().sleep(3000);
-				init();
-				e.printStackTrace();
+				System.out.println("Reconnect to database in 3 seconds.");
+				try {
+					Thread.currentThread().sleep(3000);
+					conn.close();
+				} catch (Exception e1) {
+					e1.printStackTrace(System.out);
+				}
+            	init();
+                e.printStackTrace(System.out);
         	}
         }
 
