@@ -86,7 +86,6 @@ public class Rds {
 				}
             	init();
                 e.printStackTrace(System.out);
-                break;
             }
         }
         System.out.println("Total count of tweets:" + count);
