@@ -43,10 +43,11 @@ public class Rds {
     
     public void init() {
         try {
+        	System.out.println("Init called");
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, "FallMonkey", password);
         } catch (Exception e) {
-        	e.printStackTrace();
+        	e.printStackTrace(System.out);
         }
     }
 
