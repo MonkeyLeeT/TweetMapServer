@@ -6,8 +6,8 @@ This is the real time server to process tweets from Twitter Streaming API, pushi
 Demo: Please refer to [TweetMap](https://github.com/MonkeyLeeT/TweetMap)
 
 ##Run
-Complie as : javac -cp ".:../lib/*" TwitterStream.java  
-Run as : java -cp ".:../lib/*" TwitterStream  
+Complie as : javac -cp ".:../lib/\*" TwitterStream.java  
+Run as : java -cp ".:../lib/\*" TwitterStream  
 (Assuming that you're under /src/ folder)  
 to initiate the server. It will listen on 11111 for incoming requests by default.
 
