@@ -51,7 +51,8 @@ public class Rds {
         }
     }
 
-    public List<SelectResult> select(String table, String start, String end) {
+    @SuppressWarnings("static-access")
+	public List<SelectResult> select(String table, String start, String end) {
         String sql = "SELECT * FROM " + table + 
         		" WHERE created_at < '" + end + 
         		"' AND created_at > '" + start +
@@ -92,7 +93,8 @@ public class Rds {
         return list;
     }
     
-    public void insert(boolean[] mask, Tweet tweet) throws InterruptedException {
+    @SuppressWarnings("static-access")
+	public void insert(boolean[] mask, Tweet tweet) throws InterruptedException {
         Statement stmt;
         String sqlcpy = "";
         while (true) {
