@@ -1,4 +1,4 @@
-TweetMap
+TweetMapServer
 ==============
 ##About
 This is the real time server to process tweets from Twitter Streaming API, pushing them to WebSockets and storing them in RDS.
